@@ -39,7 +39,7 @@ void AudioPlayer::bindAudioBuffer(audiodevice::IAudioBuffer *pAudioBuffer){
     }
 	m_pAudioBuffer = dynamic_cast<audiodevice::openal::AudioBuffer*>(pAudioBuffer);
     if(m_pAudioBuffer != 0){
-        core::assert_error(m_pAudioBuffer != 0, "Binding an invalid OpenAL AudioBuffer");
+        NIMBLE_ASSERT_MSG(m_pAudioBuffer != 0, "Binding an invalid OpenAL AudioBuffer");
         alSourcei(m_sourceHandle, AL_BUFFER, m_pAudioBuffer->getHandle());
         m_hasBuffer = true;
     }else{
